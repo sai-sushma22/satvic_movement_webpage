@@ -4,10 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-import dynamic from 'next/dynamic';
-import styles from './workshops.css';
+import './workshops.css';
 
 export default function Workshops() {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -17,13 +14,21 @@ export default function Workshops() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    const loadBootstrap = async () => {
+      if (typeof window !== 'undefined') {
+        await import('bootstrap/dist/js/bootstrap.bundle.min.js');
+      }
+    };
+
+    loadBootstrap();
   }, []);
 
   const handleContinue = () => {
+    if (isClient) {
       setShowContent(true);
       setIsLineBlue(true);
       setShowMobileInput(false);
+    }
   };
 
   const workshops = [
@@ -78,13 +83,12 @@ export default function Workshops() {
       <Head>
         <title>Upcoming Workshops</title>
         <meta name="description" content="Join our upcoming workshops and challenges" />
-        <meta name="description" content="Join our upcoming workshops and challenges" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" />
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
       </Head>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
           <Image 
             src='/images/logo.png'
             alt="Logo" 
@@ -93,67 +97,67 @@ export default function Workshops() {
             className="mx-auto d-block" 
           />
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">HOME</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">ABOUT US</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">ABOUT US</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">WORKSHOPS</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">WORKSHOPS</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   FOOD BOOKS
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">BOOK 1</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">BOOK 2</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">BOOK 3</a></li>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">BOOK 1</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">BOOK 2</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">BOOK 3</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   PRODUCTS
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">PRODUCT 1</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">PRODUCT 2</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">PRODUCT 3</a></li>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">PRODUCT 1</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">PRODUCT 2</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">PRODUCT 3</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">VIDEOS</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">VIDEOS</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className="nav-item dropdown">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   HEALING STORIES
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">STORY 1</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">STORY 2</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#">STORY 3</a></li>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">STORY 1</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">STORY 2</a></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><a className="dropdown-item" href="#">STORY 3</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">CONTACT US</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">CONTACT US</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">WORKSHOP LOGIN</a>
+              <li className="nav-item">
+                <a className="nav-link" href="#">WORKSHOP LOGIN</a>
               </li>
             </ul>
-            <form class="d-flex me-2">
+            <form className="d-flex me-2">
               <Image 
                 src='/images/search.png'
                 alt="Logo" 
@@ -187,27 +191,23 @@ export default function Workshops() {
         </div>
       </nav>
 
-      <div class="image_container">
-        <div class="page_tear">
+      <div className="image_container">
+        <div className="page_tear">
           <Image 
               src='/images/page_tear.png'
               alt="Logo" 
-              width={1915} 
-              height={200} 
-              layout="responsive" 
-              objectFit="cover"  
-              className="w-100 mx-0" 
+              width={2915} 
+              height={200}     
+              className="w-100 mx-0 object_contain" 
             />
         </div>
-        <div class="page_tear_border">
+        <div className="page_tear_border">
           <Image 
               src='/images/page_tear_border.png'
               alt="Logo" 
-              width={915} 
-              height={240} 
-              layout="responsive" 
-              objectFit="cover" 
-              className="w-100 mx-0" 
+              width={1915} 
+              height={240}    
+              className="w-100 mx-0 object_contain" 
             />
         </div>
       </div>
@@ -219,8 +219,8 @@ export default function Workshops() {
               <Image 
                 src={workshop.thumbnail}
                 alt={`${workshop.title} Thumbnail`} 
-                layout="fill" 
-                objectFit="cover" 
+                fill 
+                className="object_contain" 
                 style={{ position: 'absolute', top: 0, left: 0, zIndex: 1, borderRadius: '10px', cursor: 'pointer' }} 
                 onClick={() => setActiveVideo(workshop.videoSrc)} 
               />
@@ -286,41 +286,41 @@ export default function Workshops() {
         ))}
       </div>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-            <div class="line-container">
-              <hr class="custom-hr"/>
-              <hr class="custom-hr-1" style={{ backgroundColor: isLineBlue ? '#007bff' : 'gray' }} />
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+            <div className="line-container">
+              <hr className="custom-hr"/>
+              <hr className="custom-hr-1" style={{ backgroundColor: isLineBlue ? '#007bff' : 'gray' }} />
             </div>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <div class="challenge-title">Heal Yourself Challenge</div>
-              <div class="image-row">
-                  <div class="image-item">
+            <div className="modal-body">
+              <div className="challenge-title">Heal Yourself Challenge</div>
+              <div className="image-row">
+                  <div className="image-item">
                       <Image src="/images/modal-cal.png" width={20} height={20} alt="Image 1" />
-                      <span class="muted">6th may</span>
+                      <span className="muted">6th may</span>
                   </div>
-                  <div class="image-item">
+                  <div className="image-item">
                       <Image src="/images/modal-time.png" width={20} height={20} alt="Image 2" />
-                      <span class="muted">7 Days</span>
+                      <span className="muted">7 Days</span>
                   </div>
-                  <div class="image-item">
+                  <div className="image-item">
                       <Image src="/images/modal-globe.png" width={20} height={20} alt="Image 3" />
-                      <span class="muted">English</span>
+                      <span className="muted">English</span>
                   </div>
               </div>
-              <div class="border-box mt-3">
-                <div class="session-timings mx-2">
+              <div className="border-box mt-3">
+                <div className="session-timings mx-2">
                     Session Timings: 8 - 8:45 am (IST)
                 </div>
-                <hr class="horizontal_line" />
-                <div class="timing-details mx-2">
-                    <div class="image-text-row">
+                <hr className="horizontal_line" />
+                <div className="timing-details mx-2">
+                    <div className="image-text-row">
                         <Image src="/images/meet.png" width={14} height={14} alt="Schedule Icon" />
-                        <span class="blue-text">Recording available in 24 hours</span>
+                        <span className="blue-text">Recording available in 24 hours</span>
                     </div>
                 </div>
             </div>
@@ -358,10 +358,10 @@ export default function Workshops() {
                 </div>
 
                 <div className="name-card">
-                  <input type="text" class="city" placeholder="Enter Your City" />
+                  <input type="text" className="city" placeholder="Enter Your City" />
                 </div>
                 
-                <h6 class="mt-3">This workshop can help you heal the following:</h6>
+                <h6 className="mt-3">This workshop can help you heal the following:</h6>
                 <div className="options-box">
                   <div className="option-item">Thyroid Imbalance</div>
                   <div className="option-item">Excess Weight</div>
@@ -386,7 +386,7 @@ export default function Workshops() {
 
 
             </div>
-            <div class="modal-footer continue">
+            <div className="modal-footer continue">
             <button 
               type="button" 
               className="btn btn-primary continue_button" 
