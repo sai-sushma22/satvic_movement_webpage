@@ -14,6 +14,8 @@ export default function Workshops() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
+
     const loadBootstrap = async () => {
       if (typeof window !== 'undefined') {
         await import('bootstrap/dist/js/bootstrap.bundle.min.js');
@@ -38,7 +40,7 @@ export default function Workshops() {
       reviews: 3034,
       description: "If you want to reach your ultimate peak health, then this workshop is for you. Learn 7 revolutionary habits over a span of 21 days!",
       price: "990/-",
-      dateImage: "/images/Date.png",
+      dateImage: "/images/date.png",
       daysImage: "/images/Days.png",
       langImage: "/images/lang.png",
       thumbnail: "/images/video_1_thumbnail.png"
@@ -49,7 +51,7 @@ export default function Workshops() {
       reviews: 2100,
       description: "7 days program to help you learn 9 steps to heal your chronic lifestyle diseases following the Satvic Healing Plan.",
       price: "750/-",
-      dateImage: "/images/Date.png",
+      dateImage: "/images/date.png",
       daysImage: "/images/Days.png",
       langImage: "/images/lang.png",
       thumbnail: "/images/video_2_thumbnail.png"
@@ -60,7 +62,7 @@ export default function Workshops() {
       reviews: 1500,
       description: "Learn how to manage stress, anxiety, emotional imbalance and fear. Learn yoga philosophy.",
       price: "1200/-",
-      dateImage: "/images/Date.png",
+      dateImage: "/images/date.png",
       daysImage: "/images/Days.png",
       langImage: "/images/lang.png",
       thumbnail: "/images/video_3_thumbnail.png"
@@ -71,7 +73,7 @@ export default function Workshops() {
       reviews: 4500,
       description: "Cook-along all three meals with us, and experience the magic of Satvic eating!",
       price: "1500/-",
-      dateImage: "/images/Date.png",
+      dateImage: "/images/date.png",
       daysImage: "/images/Days.png",
       langImage: "/images/lang.png",
       thumbnail: "/images/video_4_thumbnail.png"
