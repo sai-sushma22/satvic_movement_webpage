@@ -2,10 +2,11 @@
 
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+import dynamic from 'next/dynamic';
 import styles from './workshops.css';
 
 export default function Workshops() {
@@ -13,6 +14,11 @@ export default function Workshops() {
   const [showContent, setShowContent] = useState(false);
   const [isLineBlue, setIsLineBlue] = useState(false);
   const [showMobileInput, setShowMobileInput] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleContinue = () => {
       setShowContent(true);
